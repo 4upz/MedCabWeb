@@ -1,3 +1,21 @@
-<p>
-  meds works!
-</p>
+
+<h2>Patient</h2>
+  <ul class = "meds">
+    <li *ngFor="let med of meds"
+      [class.selected]="med === selectedMed"
+      (click)="onSelect(med)" >
+      <span class="badge">{{med.id}}</span> {{med.name}}
+    </li>
+  </ul>
+
+<div *ngIf="selectedMed">
+
+<h2>{{ selectedMed.name | uppercase }} Details</h2>
+<div><span>id: </span>{{selectedMed.id}}</div>
+<div>
+  <label>name:
+    <input [(ngModel)]="selectedMed.name" placeholder="name">
+  </label>
+</div>
+
+</div>
